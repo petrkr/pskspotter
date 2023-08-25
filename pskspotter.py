@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 
 import paho.mqtt.client as mqtt
+import sys
 import json
 import time
 import argparse
 from colorama import Fore, Style
 from pyhamtools import LookupLib, Callinfo
 from pyhamtools.locator import calculate_distance as qth_distance
+
 
 args = None
 cinfo = None
@@ -102,6 +104,11 @@ def main():
     print("Loading lookup directory")
     lookuplib = LookupLib(lookuptype="countryfile", filename=args.cty_plist)
     cinfo = Callinfo(lookuplib)
+
+    if not cinfo.is_valid_callsign(args.call):
+        print("Error: Callsign {} is not valid!".format(args.call))
+        sys.exit(1)
+
 
     print("Connecting to MQTT server")
     client = mqtt.Client()
