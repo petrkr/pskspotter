@@ -7,9 +7,15 @@ WORKDIR /app
 ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
+# Download CTY Plist
+RUN wget https://www.country-files.com/cty/cty.plist
+
+# Dependecies
+ADD pskspotter.py requirements.txt /app/
+RUN pip install -r requirements.txt
+
 # App
 ADD pskspotter.py requirements.txt /app/
-RUN wget https://www.country-files.com/cty/cty.plist
-RUN pip install -r requirements.txt
+
 
 ENTRYPOINT [ "/entrypoint.sh" ]
