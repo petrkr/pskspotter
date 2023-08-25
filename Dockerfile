@@ -8,7 +8,7 @@ ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
 # App
-ADD pskspotter.py requirements.txt /app
+ADD pskspotter.py requirements.txt /app/
 RUN wget https://www.country-files.com/cty/cty.plist
 RUN pip install -r requirements.txt
 
