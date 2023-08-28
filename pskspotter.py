@@ -105,7 +105,7 @@ def main():
     lookuplib = LookupLib(lookuptype="countryfile", filename=args.cty_plist)
     cinfo = Callinfo(lookuplib)
 
-    if not cinfo.is_valid_callsign(args.call):
+    if not cinfo.is_valid_callsign(args.call.replace(".", "/")):
         print("Error: Callsign {} is not valid!".format(args.call))
         sys.exit(1)
 
