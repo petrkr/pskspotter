@@ -61,7 +61,7 @@ def on_message(client, userdata, msg):
         timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(payload['t']))
         scall = payload['sc'].replace(".", "/")
 
-        if scall == args.call.upper():
+        if scall == args.call.replace(".", "/").upper():
             call = payload['rc'].replace(".", "/")
             loc = payload['rl']
             color = Fore.RED + "| TX"
