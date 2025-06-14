@@ -11,11 +11,11 @@ RUN chmod +x /entrypoint.sh
 RUN wget https://www.country-files.com/cty/cty.plist
 
 # Dependecies
-ADD pskspotter.py requirements.txt /app/
+ADD requirements.txt /app/
 RUN pip install -r requirements.txt
 
 # App
-ADD pskspotter.py requirements.txt /app/
+ADD pskspotter.py /app/
 
 
 ENTRYPOINT [ "/entrypoint.sh" ]
